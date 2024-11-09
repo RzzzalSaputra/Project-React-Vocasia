@@ -1,9 +1,7 @@
-import React from 'react'
+import FormLogin from "../assets/components/organisms/FormLogin";
 
 const Login = () => {
-  return (
-    <div>Login Page Here</div>
-  )
+  return (<FormLogin />);
 }
 
 export default Login
