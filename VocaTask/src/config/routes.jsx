@@ -1,7 +1,7 @@
 import {createBrowserRouter} from "react-router-dom";
 import FormLogin from "../assets/components/organisms/FormLogin";
 import Task from "../pages/Task";
-import UpdateProfile from "../pages/UpdateProfile";
+import Setting from "../pages/Setting";
 
 export const routes = createBrowserRouter([
     {
@@ -14,6 +14,6 @@ export const routes = createBrowserRouter([
     },
     {
         path: "/update-profile",
-        element: <UpdateProfile />,
+        element: <Setting />,
     }
 ])
