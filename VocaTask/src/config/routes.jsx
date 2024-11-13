@@ -1,12 +1,12 @@
 import {createBrowserRouter} from "react-router-dom";
-import FormLogin from "../assets/components/organisms/FormLogin";
+import Login from "../pages/Login";
 import Task from "../pages/Task";
 import Setting from "../pages/Setting";
 
 export const routes = createBrowserRouter([
     {
         path: "/",
-        element: <FormLogin />,
+        element: <Login />,
     },
     {
         path: "/task",
