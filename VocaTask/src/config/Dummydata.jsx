@@ -2,7 +2,6 @@ import { createContext, useState } from "react";
 
 const DataContext = createContext();
 
-// eslint-disable-next-line react/prop-types
 const DummyData = ({ children }) => {
     const [task, setTask] = useState([
         { id: 1, title: "Title Task 1", isDone: false },
@@ -18,25 +17,22 @@ const DummyData = ({ children }) => {
         img: "https://i.pinimg.com/564x/c3/91/51/c3915194a21f43ccabfc2d0fd8c3a641.jpg",
     });
 
-    // Fungsi untuk mengubah profil
     const ChangeProfile = (newData) => {
-        setDataProfile((prevData) => ({
-            ...prevData,
-            ...newData,
-        }));
+        setDataProfile(newData);
     };
 
-    // Fungsi untuk mengubah status task
     const ChangeStatus = (id) => {
-        setTask((prevTask) =>
-            prevTask.map((item) =>
+        setTask((DataLama) =>
+            //Akses Dengan Map
+            DataLama.map((item) =>
+                // Cek Jika item atau data id sama dengan id yang dimasukkan maka
                 item.id === id ? { ...item, isDone: !item.isDone } : item
             )
         );
     };
 
-    // Fungsi untuk menambah task baru
     const addTask = (title) => {
+        // Jika title Kosong
         if (!title.trim()) return;
 
         const newTask = {
@@ -48,7 +44,6 @@ const DummyData = ({ children }) => {
         setTask((prevTask) => [...prevTask, newTask]);
     };
 
-    // Mengembalikan konteks dengan Provider yang menyediakan task, ChangeStatus, dataProfile, ChangeProfile, dan addTask
     return (
         <DataContext.Provider value={{ task, ChangeStatus, dataProfile, ChangeProfile, addTask }}>
             {children}

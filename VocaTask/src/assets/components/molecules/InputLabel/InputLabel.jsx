@@ -1,4 +1,4 @@
-import Input from "../../atoms/Input/Input";
+import { Input } from "../../atoms";
 
 const InputLabel = ({ htmlFor, placeholder, children, type = "text" }) => {
     return (

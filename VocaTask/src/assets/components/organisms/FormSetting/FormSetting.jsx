@@ -1,5 +1,5 @@
-import InputLabel from "../molecules/InputLabel/InputLabel";
-import Button from "../atoms/Button/Button";
+import { InputLabel } from "../../molecules";
+import { Button } from "../../atoms";
 const FormSetting = () => {
     return (
         <>

@@ -1,9 +1,7 @@
-import Button from "../assets/components/atoms/Button/Button";
-import Paragraf from "../assets/components/atoms/Paragraf/Paragraf";
-import Avatar from "../assets/components/atoms/Avatar/Avatar";
-import FormSetting from "../assets/components/organisms/FormSetting";
-import {Link} from "react-router-dom";
+import { Button, Avatar } from "../assets/components/atoms";
+import { FormSetting } from "../assets/components/organisms";
 import { DataContext } from "../config/Dummydata";
+import {Link} from "react-router-dom";
 import { useContext } from "react";
 
 const UpdateProfile = () => {
@@ -17,7 +15,7 @@ const UpdateProfile = () => {
                 <img width="24" height="24" src="https://img.icons8.com/material-sharp/24/FFFFFF/back--v1.png" alt="back--v1"/>
               </Button>
             </Link>
-            <Paragraf className="font-semibold text-2xl">Setting</Paragraf>
+            <p className="font-semibold text-2xl">Setting</p>
           </div>
           <Avatar src={dataProfile.img} />
           <FormSetting />

@@ -1,7 +1,5 @@
 import {createBrowserRouter} from "react-router-dom";
-import Login from "../pages/Login";
-import Task from "../pages/Task";
-import Setting from "../pages/Setting";
+import { Login, Task, Setting } from "../pages";
 
 export const routes = createBrowserRouter([
     {

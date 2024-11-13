@@ -1,8 +1,6 @@
-import Avatar from "../../atoms/Avatar/Avatar";
-import Paragraf from "../../atoms/Paragraf/Paragraf";
-import Button from "../../atoms/Button/Button";
-import { Link } from "react-router-dom";
+import { Avatar, Button } from "../../atoms";
 import { DataContext } from "../../../../config/Dummydata";
+import { Link } from "react-router-dom";
 import { useContext } from "react";
 
 const UserProfile = () => {
@@ -11,7 +9,7 @@ const UserProfile = () => {
   return (
     <div className="flex flex-col items-center justify-center bg-neutral-900 border-2 border-blue-400 p-7 rounded-md space-y-5 box-content">
       <Avatar src={dataProfile.img} />
-      <Paragraf className="text-center">{dataProfile.name}</Paragraf>
+      <p className="text-center">{dataProfile.name}</p>
       <div className="">
         <Link to="/update-profile">
           <Button className="w-full">

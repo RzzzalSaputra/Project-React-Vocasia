@@ -1,9 +1,7 @@
 import { useContext, useState } from "react";
-import Input from "../atoms/Input/Input";
-import Button from "../atoms/Button/Button";
-import Paragraf from "../atoms/Paragraf/Paragraf";
-import { CardTask } from "../molecules/CardTask/CardTask";
-import { DataContext } from "../../../config/Dummydata";
+import  {Button, Input} from "../../atoms";
+import { CardTask } from "../../molecules";
+import { DataContext } from "../../../../config/Dummydata";
 
 const TaskList = () => {
   const { task, addTask, ChangeStatus } = useContext(DataContext); // Mengambil data dan fungsi dari konteks
@@ -34,7 +32,7 @@ const TaskList = () => {
         </Button>
       </div>
 
-      <Paragraf className="my-4">Task to do - {task.filter(t => !t.isDone).length}</Paragraf>
+      <p className="my-4">Task to do - {task.filter(t => !t.isDone).length}</p>
       <div className="space-y-3">
         {task.filter(t => !t.isDone).map((t) => (
           <CardTask
@@ -42,12 +40,12 @@ const TaskList = () => {
             id={t.id}         
             title={t.title}    
             isDone={t.isDone}  
-            onClick={() => ChangeStatus(t.id)} // OnClick untuk mengubah status task
+            onClick={() => ChangeStatus(t.id)}
           />
         ))}
       </div>
 
-      <Paragraf className="my-4">Task done</Paragraf>
+      <p className="my-4">Task done</p>
       <div className="space-y-3">
         {task.filter(t => t.isDone).map((t) => (
           <CardTask
@@ -56,7 +54,7 @@ const TaskList = () => {
             title={t.title}
             isDone={t.isDone}
             className="line-through"
-            onClick={() => ChangeStatus(t.id)} // OnClick untuk mengubah status task
+            onClick={() => ChangeStatus(t.id)}
           />
         ))}
       </div>
