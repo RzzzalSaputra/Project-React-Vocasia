@@ -5,33 +5,26 @@ import Swal from "sweetalert2";
 import { useState } from "react";
 import userStore from "../store/userStore";
 
-const Login = () => {
+const Register = () => {
     const navigate = useNavigate();
-    const {login} = userStore()
+    const {register} = userStore()
+    const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
     
     const handleSubmit = async ()=>{
-      const log = await login(email,password)
-      console.log(log)
-      if(log){
+      const res = await register(name, email, password)
+      console.log(email, name, password)
+      if(res){
         Swal.fire({
             icon: 'success',
-            title: 'Login Berhasil',
-            text: 'Hallo :}',
-            timer: 1000,
+            title: 'Daftar Berhasil',
+            text: 'Silahkan Login',
+            timer: 3000,
             showConfirmButton: false
         })
-        navigate('/task')
-      }else{
-          Swal.fire({
-          icon: 'error',
-          title: 'Login Gagal',
-          text: log.message,
-          timer: 1000,
-          showConfirmButton: false
-        })
+        navigate('/')
       }
   }
 
@@ -42,11 +35,20 @@ const Login = () => {
           <h1 className="text-4xl font-bold text-center p-5 text-white">VocaTask</h1>
           <div className="space-y-4">            
             <InputLabel
+              htmlFor="name"
+              placeholder="Masukkan Nama"
+              type="text"
+              value={name}
+              onChange={(e)=>{setName(e.target.value)}}
+            >
+             Nama
+            </InputLabel>            
+            <InputLabel
               htmlFor="email"
               placeholder="Masukkan email"
               type="email"
               value={email}
-              onChange={(e)=>{setEmail(e.target.value)}}
+              onChange={(e)=>{setEmail  (e.target.value)}}
             >
               Email
             </InputLabel>
@@ -59,8 +61,8 @@ const Login = () => {
             >
               Password
             </InputLabel>
-              <Button onClick={handleSubmit} type="button" className="w-full mt-4">Login</Button>
-              <Link title={"Belum Punya Akun "} linkText={"Daftar"} onClick={()=>navigate('/register')}/>
+              <Button onClick={handleSubmit} type="button" className="w-full mt-4">Daftar</Button>
+              <Link title={"Sudah Punya Akun "} linkText={"Login"} onClick={()=>navigate('/')}/>
           </div>
         </div>
       </div>
@@ -68,4 +70,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;

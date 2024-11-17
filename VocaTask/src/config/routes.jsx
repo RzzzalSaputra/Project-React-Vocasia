@@ -1,5 +1,5 @@
 import {createBrowserRouter} from "react-router-dom";
-import { Login, Task, Setting } from "../pages";
+import { Login, Task, Setting, Register } from "../pages";
 
 export const routes = createBrowserRouter([
     {
@@ -13,5 +13,9 @@ export const routes = createBrowserRouter([
     {
         path: "/update-profile",
         element: <Setting />,
+    },
+    {
+        path: "/register",
+        element: <Register/>
     }
 ])
