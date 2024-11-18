@@ -14,7 +14,6 @@ const Login = () => {
     
     const handleSubmit = async ()=>{
       const log = await login(email,password)
-      console.log(log)
       if(log){
         Swal.fire({
             icon: 'success',
@@ -28,7 +27,7 @@ const Login = () => {
           Swal.fire({
           icon: 'error',
           title: 'Login Gagal',
-          text: log.message,
+          text: 'Coba Lagi',
           timer: 1000,
           showConfirmButton: false
         })

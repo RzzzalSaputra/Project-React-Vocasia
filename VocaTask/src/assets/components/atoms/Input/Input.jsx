@@ -1,4 +1,3 @@
-// eslint-disable-next-line react/prop-types
 const Input = ({ className, ...props }) => {
   return (
       <input className={`input input-bordered w-full bg-transparent text-white ${className}`} {...props} />

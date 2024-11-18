@@ -4,22 +4,31 @@ import { getAccessToken, removeAccessToken, saveAccessToken, decodeToken } from 
 
 const userStore = create((set) => ({
     user: null,
-    // Ambil user dari token yang tersimpan
+    userData: null,
+
     getCurrentUser: () => {
         const accessToken = getAccessToken();
         if (accessToken) {
-            set({ user: decodeToken(accessToken) });
+            set({ user: decodeToken(accessToken)});
         }
     },
 
-    // Login User
+    getDataUser: async ()=>{
+        try {
+            const res = await api.get('api/users/profile')
+
+            set({userData: res.data})
+        } catch (error) {
+            console.error(error)
+        }
+
+    },
+
     login: async (email, password) => {
         try {
             const res = await api.post('/api/users/login', { email, password });
-            console.log(res.data)
             saveAccessToken(res.data.token);
             set({ user: decodeToken(res.data.token) });
-            console.log(getAccessToken())
             return res;
         } catch (error) {
             console.error(error)
@@ -29,7 +38,6 @@ const userStore = create((set) => ({
     // Register User
     register: async (name, email, password) => {
         try {
-            console.log("ini name:"+name, email, password)
             const data = await api.post('/api/users/register', { name, email, password });
 
             return data;
@@ -41,7 +49,7 @@ const userStore = create((set) => ({
     // Logout User
     logout: () => {
         removeAccessToken();
-        set({ user: null });
+        set({ user: null, userData: null });
     },
 }));
 
