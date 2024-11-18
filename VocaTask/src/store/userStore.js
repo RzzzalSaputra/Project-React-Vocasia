@@ -2,7 +2,7 @@ import { create } from 'zustand';
 import { axiosInstance as api } from '../config/axiosInstance';
 import { getAccessToken, removeAccessToken, saveAccessToken, decodeToken } from '../utils/tokenManager';
 
-const userStore = create((set) => ({
+const userStore = create((set, get) => ({
     user: null,
     userData: null,
 
@@ -38,9 +38,19 @@ const userStore = create((set) => ({
     // Register User
     register: async (name, email, password) => {
         try {
-            const data = await api.post('/api/users/register', { name, email, password });
+            const res = await api.post('/api/users/register', { name, email, password });
 
-            return data;
+            return res;
+        } catch (error) {
+            console.error(error)
+        }
+    },
+
+    updateUser: async (data) => {
+        try {
+            const res = await api.put('/api/users/profile', { ...data});
+            get().getDataUser()
+            return res;
         } catch (error) {
             console.error(error)
         }

@@ -5,7 +5,6 @@ import { useEffect } from "react";
 
 const UserProfile = () => {
   const { userData, getDataUser, logout } = userStore();
-
   
   useEffect(()=>{
     getDataUser();
@@ -14,7 +13,7 @@ const UserProfile = () => {
 
   return (
     <div className="flex flex-col items-center justify-center bg-neutral-900 border-2 border-blue-400 p-7 rounded-md space-y-5 box-content">
-      <Avatar src={userData?.image ? userData.image : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"} />
+      <Avatar src={userData?.photo_url ? userData.photo_url : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"} />
       <p className="text-center">{userData?.name}</p>
       <div className="">
         <Link to="/update-profile">
